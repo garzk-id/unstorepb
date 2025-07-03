@@ -59,6 +59,23 @@
     </div>
 </nav>
 
+<!-- Popad WhatsApp -->
+<div id="whatsappPopup">
+    <button class="close-btn" onclick="closeWhatsappPopup()">
+        <i class="bi bi-x"></i>
+    </button>
+    <div class="content">
+        <i class="bi bi-whatsapp icon"></i>
+        <div class="text">
+            <strong>Gabung Grup WhatsApp UNSTOREPB</strong>
+            <p class="text-sm">Dapatkan info promo & update terbaru!</p>
+            <a href="https://bit.ly/UNSTOREPBGroupWA" target="_blank" class="btn">
+                <i class="bi bi-whatsapp mr-1"></i> Gabung Sekarang
+            </a>
+        </div>
+    </div>
+</div>
+
 <!-- Hero Section -->
 <header class="hero-bg text-white py-32 relative overflow-hidden">
     <div class="absolute inset-0 bg-black/30 z-0"></div>
@@ -123,7 +140,8 @@
                         </div>
                     </div>
                     <div class="flex space-x-3">
-                        <button class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 py-3 rounded-lg font-medium transition flex items-center justify-center text-sm" onclick="showDetailModal('MAJOR #M1UF45', 'M1UF45', 45000)">
+                        <button class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 py-3 rounded-lg font-medium transition flex items-center justify-center text-sm" 
+                                onclick="showDetailModal('MAJOR #M1UF45', 'M1UF45', 45000, 'https://drive.google.com/drive/folders/1g2pji2_nE7Dkf_ATWqFhOEcPI2LpSkNQ?usp=drive_link')">
                             <i class="bi bi-eye mr-2"></i> Detail 
                         </button>
                         <button class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition flex items-center justify-center text-sm" onclick="showPaymentModal('MAJOR #M1UF45', 45000, 'M1UF45')">
@@ -158,7 +176,8 @@
                         </div>
                     </div>
                     <div class="flex space-x-3">
-                        <button class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 py-3 rounded-lg font-medium transition flex items-center justify-center text-sm" onclick="showDetailModal('MAJOR #M1UF55', '#M1UF55', 55000)">
+                        <button class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 py-3 rounded-lg font-medium transition flex items-center justify-center text-sm" 
+                            onclick="showDetailModal('MAJOR #M1UF55', '#M1UF55', 55000, 'https://drive.google.com/drive/folders/15WSJtU5Fpq4OxGQH536NSOj7Sj3Qgm8z?usp=drive_link')">
                             <i class="bi bi-eye mr-2"></i> Detail 
                         </button>
                         <button class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition flex items-center justify-center text-sm" onclick="showPaymentModal('MAJOR #M1UF55', 55000, '#M1UF55')">
@@ -193,7 +212,8 @@
                         </div>
                     </div>
                     <div class="flex space-x-3">
-                        <button class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 py-3 rounded-lg font-medium transition flex items-center justify-center text-sm" onclick="showDetailModal('BINTANG #B1UF160', '#B1UF160, 160000')">
+                        <button class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 py-3 rounded-lg font-medium transition flex items-center justify-center text-sm" 
+                            onclick="showDetailModal('BINTANG #B1UF160', '#B1UF160', 160000, 'https://drive.google.com/drive/u/1/folders/1vy3kSLeXLjWOjXkrQEqZXyStY15x0o-v')">
                             <i class="bi bi-eye mr-2"></i> Detail 
                         </button>
                         <button class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition flex items-center justify-center text-sm" onclick="showPaymentModal('BINTANG #B1UF160', 160000, '#B1UF160')">
@@ -228,7 +248,8 @@
                         </div>
                     </div>
                     <div class="flex space-x-3">
-                        <button class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 py-3 rounded-lg font-medium transition flex items-center justify-center text-sm" onclick="showDetailModal('MAJOR #M1UF190', '#M1UF190', 200000)">
+                        <button class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 py-3 rounded-lg font-medium transition flex items-center justify-center text-sm" 
+                            onclick="showDetailModal('MAJOR #M1UF190', '#M1UF190', 200000, 'https://drive.google.com/drive/folders/1JLegQwEdGUkcDJeWkfN6X0zESNriUciC?usp=drive_link')">
                             <i class="bi bi-eye mr-2"></i> Detail 
                         </button>
                         <button class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition flex items-center justify-center text-sm" onclick="showPaymentModal('MAJOR #M1UF190', 200000, '#M1UF190')">
@@ -262,7 +283,8 @@
                         </div>
                     </div>
                     <div class="flex space-x-3">
-                        <button class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 py-3 rounded-lg font-medium transition flex items-center justify-center text-sm" onclick="showDetailModal('MAJOR #M1UF220', '#M1UF220', 220000)">
+                        <button class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 py-3 rounded-lg font-medium transition flex items-center justify-center text-sm" 
+                            onclick="showDetailModal('MAJOR #M1UF220', '#M1UF220', 220000, 'https://drive.google.com/drive/folders/1FTz0z3qCv5N1IW0aZXgbSJmPAaPwbFN4?usp=drive_link')">
                             <i class="bi bi-eye mr-2"></i> Detail 
                         </button>
                         <button class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition flex items-center justify-center text-sm" onclick="showPaymentModal('MAJOR #M1UF220', 220000, '#M1UF220')">
@@ -297,7 +319,8 @@
                         </div>
                     </div>
                     <div class="flex space-x-3">
-                        <button class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 py-3 rounded-lg font-medium transition flex items-center justify-center text-sm" onclick="showDetailModal('MAJOR #M1UF65', '#M1UF65', 65000)">
+                        <button class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 py-3 rounded-lg font-medium transition flex items-center justify-center text-sm" 
+                            onclick="showDetailModal('MAJOR #M1UF65', '#M1UF65', 65000, 'https://drive.google.com/drive/folders/171400j6CjeA7N2gryo80ZynbLyNsvp_y?usp=drive_link')">
                             <i class="bi bi-eye mr-2"></i> Detail 
                         </button>
                         <button class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition flex items-center justify-center text-sm" onclick="showPaymentModal('MAJOR #M1UF65', 65000, '#M1UF65')">
@@ -1272,7 +1295,7 @@
                     
                     <div id="tab3" class="tab-content py-4 hidden">
                         <div class="flex justify-center">
-                            <a href="https://drive.google.com/drive/u/1/folders/1g2pji2_nE7Dkf_ATWqFhOEcPI2LpSkNQ" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition flex items-center justify-center">
+                            <a id="driveLink" href="#" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition flex items-center justify-center">
                                 <i class="bi bi-google-drive mr-2"></i> Lihat Spesifikasi Lengkap
                             </a>
                         </div>
@@ -1422,7 +1445,7 @@ function showPaymentModal(name, price, code) {
 }
 
 // Update fungsi showDetailModal
-function showDetailModal(name, code, price = 0) {
+function showDetailModal(name, code, price = 0, driveLink = '') {
     const modal = document.getElementById('detailModal');
     document.getElementById('detailProductName').textContent = name;
     document.getElementById('detailProductCode').textContent = code;
@@ -1448,7 +1471,16 @@ function showDetailModal(name, code, price = 0) {
         document.getElementById('detailItems').textContent = '550+';
     }
     
-    
+    // Update link Google Drive
+    const driveLinkElement = document.getElementById('driveLink');
+    if (driveLink) {
+        driveLinkElement.href = driveLink;
+        driveLinkElement.style.display = 'block';
+        document.querySelector('#tab3 p').style.display = 'block';
+    } else {
+        driveLinkElement.style.display = 'none';
+        document.querySelector('#tab3 p').style.display = 'none';
+    }
     
     // Set tombol beli
     const buyBtn = document.getElementById('buyFromDetailBtn');
@@ -1565,6 +1597,22 @@ document.querySelectorAll('#mobileMenu a').forEach(link => {
 window.addEventListener('load', function() {
     document.getElementById('loadingScreen').style.display = 'none';
 });
+
+// Show WhatsApp popup after 5 seconds
+setTimeout(function() {
+        // Check if user has already seen the popup today
+        if (!localStorage.getItem('whatsappPopupShown') || 
+            localStorage.getItem('whatsappPopupShown') !== new Date().toDateString()) {
+            
+            document.getElementById('whatsappPopup').style.display = 'block';
+            localStorage.setItem('whatsappPopupShown', new Date().toDateString());
+        }
+    }, 5000);
+
+    // Close WhatsApp popup
+    function closeWhatsappPopup() {
+        document.getElementById('whatsappPopup').style.display = 'none';
+    }
 </script>
 </body>
 </html>
