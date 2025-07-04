@@ -29,6 +29,10 @@
                 <i class="bi bi-lightning-charge mr-1"></i> 
                 <span>Jasa GB</span>
             </a>
+            <a href="#calculator" class="hover:text-blue-300 transition flex items-center">
+                <i class="bi bi-calculator mr-1"></i> 
+                <span>Kalkulator EXP</span>
+            </a>
             <a href="#pembayaran" class="hover:text-blue-300 transition flex items-center">
                 <i class="bi bi-credit-card mr-1"></i> 
                 <span>Pembayaran</span>
@@ -49,6 +53,9 @@
         </a>
         <a href="#jasa" class="block py-3 hover:text-blue-300 transition flex items-center border-b border-blue-800">
             <i class="bi bi-lightning-charge mr-2"></i> Jasa GB 
+        </a>
+        <a href="#calculator" class="block py-3 hover:text-blue-300 transition flex items-center border-b border-blue-800">
+            <i class="bi bi-calculator mr-2"></i> Kalkulator EXP
         </a>
         <a href="#pembayaran" class="block py-3 hover:text-blue-300 transition flex items-center border-b border-blue-800">
             <i class="bi bi-credit-card mr-2"></i> Pembayaran 
@@ -612,6 +619,298 @@
     </div>
 </section>
 
+<!-- GB EXP Calculator Section -->
+<section id="calculator" class="py-20 bg-white relative overflow-hidden">
+    <div class="absolute -top-20 -right-20 w-64 h-64 bg-blue-500 rounded-full filter blur-3xl opacity-10 -z-10"></div>
+    
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                <span class="text-stroke">Kalkulator</span> <span class="gradient-text">GB EXP</span>
+            </h2>
+            <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                Hitung jumlah EXP yang dibutuhkan untuk naik pangkat
+            </p>
+        </div>
+        
+        <div class="max-w-2xl mx-auto bg-gray-50 rounded-2xl p-8 shadow-md">
+            <div class="mb-6">
+                <label class="block text-gray-700 mb-2 font-medium">Jenis Kalkulator</label>
+                <div class="flex space-x-4">
+                    <button id="calcTypeAccount" class="flex-1 bg-blue-600 text-white py-2 rounded-lg font-medium transition" onclick="setCalculatorType('account')">
+                        EXP Akun
+                    </button>
+                    <button id="calcTypeClan" class="flex-1 bg-gray-200 text-gray-800 py-2 rounded-lg font-medium transition" onclick="setCalculatorType('clan')">
+                        EXP Clan
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Akun EXP Calculator -->
+            <div id="accountCalculator">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <label class="block text-gray-700 mb-2 font-medium">Pangkat Sekarang</label>
+                        <select id="currentRank" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="0">Trainee (0 EXP)</option>
+                            <option value="2000">Senior Trainee (2,000 EXP)</option>
+                            <option value="5000">Private (5,000 EXP)</option>
+                            <option value="9000">Corporal (9,000 EXP)</option>
+                            <option value="14000">Sergeant (14,000 EXP)</option>
+                            <option value="21000">Staff Sgt. Grade 1 (21,000 EXP)</option>
+                            <option value="30000">Staff Sgt. Grade 2 (30,000 EXP)</option>
+                            <option value="41000">Staff Sgt. Grade 3 (41,000 EXP)</option>
+                            <option value="54500">Sgt. 1st Class Grade 1 (54,500 EXP)</option>
+                            <option value="70500">Sgt. 1st Class Grade 2 (70,500 EXP)</option>
+                            <option value="89000">Sgt. 1st Class Grade 3 (89,000 EXP)</option>
+                            <option value="110000">Sgt. 1st Class Grade 4 (110,000 EXP)</option>
+                            <option value="134000">Master Sgt. Grade 1 (134,000 EXP)</option>
+                            <option value="161000">Master Sgt. Grade 2 (161,000 EXP)</option>
+                            <option value="191000">Master Sgt. Grade 3 (191,000 EXP)</option>
+                            <option value="224000">Master Sgt. Grade 4 (224,000 EXP)</option>
+                            <option value="260000">Master Sgt. Grade 5 (260,000 EXP)</option>
+                            <option value="301000">2nd Lt. Grade 1 (301,000 EXP)</option>
+                            <option value="347000">2nd Lt. Grade 2 (347,000 EXP)</option>
+                            <option value="398000">2nd Lt. Grade 3 (398,000 EXP)</option>
+                            <option value="454000">2nd Lt. Grade 4 (454,000 EXP)</option>
+                            <option value="516000">1st Lt. Grade 1 (516,000 EXP)</option>
+                            <option value="584000">1st Lt. Grade 2 (584,000 EXP)</option>
+                            <option value="658000">1st Lt. Grade 3 (658,000 EXP)</option>
+                            <option value="738000">1st Lt. Grade 4 (738,000 EXP)</option>
+                            <option value="824000">1st Lt. Grade 5 (824,000 EXP)</option>
+                            <option value="917000">Captain Grade 1 (917,000 EXP)</option>
+                            <option value="1017000">Captain Grade 2 (1,017,000 EXP)</option>
+                            <option value="1124000">Captain Grade 3 (1,124,000 EXP)</option>
+                            <option value="1238000">Captain Grade 4 (1,238,000 EXP)</option>
+                            <option value="1359000">Captain Grade 5 (1,359,000 EXP)</option>
+                            <option value="1510000">Major Grade 1 (1,510,000 EXP)</option>
+                            <option value="1691000">Major Grade 2 (1,691,000 EXP)</option>
+                            <option value="1902000">Major Grade 3 (1,902,000 EXP)</option>
+                            <option value="2143000">Major Grade 4 (2,143,000 EXP)</option>
+                            <option value="2414000">Major Grade 5 (2,414,000 EXP)</option>
+                            <option value="2725000">Lt. Colonel Grade 1 (2,725,000 EXP)</option>
+                            <option value="3076000">Lt. Colonel Grade 2 (3,076,000 EXP)</option>
+                            <option value="3467000">Lt. Colonel Grade 3 (3,467,000 EXP)</option>
+                            <option value="3898000">Lt. Colonel Grade 4 (3,898,000 EXP)</option>
+                            <option value="4369000">Lt. Colonel Grade 5 (4,369,000 EXP)</option>
+                            <option value="4890000">Colonel Grade 1 (4,890,000 EXP)</option>
+                            <option value="5461000">Colonel Grade 2 (5,461,000 EXP)</option>
+                            <option value="6082000">Colonel Grade 3 (6,082,000 EXP)</option>
+                            <option value="6753000">Colonel Grade 4 (6,753,000 EXP)</option>
+                            <option value="7474000">Colonel Grade 5 (7,474,000 EXP)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2 font-medium">Target Pangkat</label>
+                        <select id="targetRank" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="2000">Senior Trainee (2,000 EXP)</option>
+                            <option value="5000">Private (5,000 EXP)</option>
+                            <option value="9000">Corporal (9,000 EXP)</option>
+                            <option value="14000">Sergeant (14,000 EXP)</option>
+                            <option value="21000">Staff Sgt. Grade 1 (21,000 EXP)</option>
+                            <option value="30000">Staff Sgt. Grade 2 (30,000 EXP)</option>
+                            <option value="41000">Staff Sgt. Grade 3 (41,000 EXP)</option>
+                            <option value="54500">Sgt. 1st Class Grade 1 (54,500 EXP)</option>
+                            <option value="70500">Sgt. 1st Class Grade 2 (70,500 EXP)</option>
+                            <option value="89000">Sgt. 1st Class Grade 3 (89,000 EXP)</option>
+                            <option value="110000">Sgt. 1st Class Grade 4 (110,000 EXP)</option>
+                            <option value="134000">Master Sgt. Grade 1 (134,000 EXP)</option>
+                            <option value="161000">Master Sgt. Grade 2 (161,000 EXP)</option>
+                            <option value="191000">Master Sgt. Grade 3 (191,000 EXP)</option>
+                            <option value="224000">Master Sgt. Grade 4 (224,000 EXP)</option>
+                            <option value="260000">Master Sgt. Grade 5 (260,000 EXP)</option>
+                            <option value="301000">2nd Lt. Grade 1 (301,000 EXP)</option>
+                            <option value="347000">2nd Lt. Grade 2 (347,000 EXP)</option>
+                            <option value="398000">2nd Lt. Grade 3 (398,000 EXP)</option>
+                            <option value="454000">2nd Lt. Grade 4 (454,000 EXP)</option>
+                            <option value="516000">1st Lt. Grade 1 (516,000 EXP)</option>
+                            <option value="584000">1st Lt. Grade 2 (584,000 EXP)</option>
+                            <option value="658000">1st Lt. Grade 3 (658,000 EXP)</option>
+                            <option value="738000">1st Lt. Grade 4 (738,000 EXP)</option>
+                            <option value="824000">1st Lt. Grade 5 (824,000 EXP)</option>
+                            <option value="917000">Captain Grade 1 (917,000 EXP)</option>
+                            <option value="1017000">Captain Grade 2 (1,017,000 EXP)</option>
+                            <option value="1124000">Captain Grade 3 (1,124,000 EXP)</option>
+                            <option value="1238000">Captain Grade 4 (1,238,000 EXP)</option>
+                            <option value="1359000">Captain Grade 5 (1,359,000 EXP)</option>
+                            <option value="1510000">Major Grade 1 (1,510,000 EXP)</option>
+                            <option value="1691000">Major Grade 2 (1,691,000 EXP)</option>
+                            <option value="1902000">Major Grade 3 (1,902,000 EXP)</option>
+                            <option value="2143000">Major Grade 4 (2,143,000 EXP)</option>
+                            <option value="2414000">Major Grade 5 (2,414,000 EXP)</option>
+                            <option value="2725000">Lt. Colonel Grade 1 (2,725,000 EXP)</option>
+                            <option value="3076000">Lt. Colonel Grade 2 (3,076,000 EXP)</option>
+                            <option value="3467000">Lt. Colonel Grade 3 (3,467,000 EXP)</option>
+                            <option value="3898000">Lt. Colonel Grade 4 (3,898,000 EXP)</option>
+                            <option value="4369000">Lt. Colonel Grade 5 (4,369,000 EXP)</option>
+                            <option value="4890000">Colonel Grade 1 (4,890,000 EXP)</option>
+                            <option value="5461000">Colonel Grade 2 (5,461,000 EXP)</option>
+                            <option value="6082000">Colonel Grade 3 (6,082,000 EXP)</option>
+                            <option value="6753000">Colonel Grade 4 (6,753,000 EXP)</option>
+                            <option value="7474000">Colonel Grade 5 (7,474,000 EXP)</option>
+                            <option value="8255000">Brigadier (Bintang 1 - 8,255,000 EXP)</option>
+                            <option value="17059000">Lt General (Bintang 3 - 17,059,000 EXP)</option>
+                            <option value="36150000">General (Bintang 4 - 36,150,000 EXP)</option>
+                            <option value="99999999">Commander (Bintang 5 - 99,999,999 EXP)</option>
+                            <option value="100000000">Hero (100,000,000 EXP)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-gray-700 mb-2 font-medium">EXP Saat Ini</label>
+                    <input type="number" id="currentExp" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Masukkan EXP saat ini (opsional)">
+                </div>
+            </div>
+            
+            <!-- Clan EXP Calculator -->
+            <div id="clanCalculator" class="hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <label class="block text-gray-700 mb-2 font-medium">Pangkat Clan Sekarang</label>
+                        <select id="currentClanRank" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="0">Trainee Grade 1 (0 EXP)</option>
+                            <option value="40000">Trainee Grade 2 (40,000 EXP)</option>
+                            <option value="48000">Trainee Grade 3 (48,000 EXP)</option>
+                            <option value="56000">Novice Grade 1 (56,000 EXP)</option>
+                            <option value="72000">Novice Grade 2 (72,000 EXP)</option>
+                            <option value="80000">Support Grade 1 (80,000 EXP)</option>
+                            <option value="120000">Support Grade 2 (120,000 EXP)</option>
+                            <option value="160000">Support Grade 3 (160,000 EXP)</option>
+                            <option value="120000">Excellent Grade 1 (120,000 EXP)</option>
+                            <option value="200000">Excellent Grade 2 (200,000 EXP)</option>
+                            <option value="240000">Excellent Grade 3 (240,000 EXP)</option>
+                            <option value="280000">Excellent Grade 4 (280,000 EXP)</option>
+                            <option value="320000">Blackfoot Grade 1 (320,000 EXP)</option>
+                            <option value="360000">Blackfoot Grade 2 (360,000 EXP)</option>
+                            <option value="360000">Blackfoot Grade 3 (360,000 EXP)</option>
+                            <option value="400000">Blackfoot Grade 4 (400,000 EXP)</option>
+                            <option value="480000">Spearhead Grade 1 (480,000 EXP)</option>
+                            <option value="560000">Spearhead Grade 2 (560,000 EXP)</option>
+                            <option value="640000">Spearhead Grade 3 (640,000 EXP)</option>
+                            <option value="720000">Spearhead Grade 3 Perak (720,000 EXP)</option>
+                            <option value="560000">Spearhead Grade 3 Emas (560,000 EXP)</option>
+                            <option value="640000">Assaulter Grade 1 (640,000 EXP)</option>
+                            <option value="720000">Assaulter Grade 2 (720,000 EXP)</option>
+                            <option value="800000">Assaulter Grade 3 (800,000 EXP)</option>
+                            <option value="880000">Assaulter Grade 3 Perak (880,000 EXP)</option>
+                            <option value="960000">Assaulter Grade 3 Emas (960,000 EXP)</option>
+                            <option value="1840000">Battletank Grade 1 (1,840,000 EXP)</option>
+                            <option value="1120000">Battletank Grade 2 (1,120,000 EXP)</option>
+                            <option value="1200000">Battletank Grade 3 (1,200,000 EXP)</option>
+                            <option value="1280000">Battletank Grade 3 Perak (1,280,000 EXP)</option>
+                            <option value="1600000">Battletank Grade 3 Emas (1,600,000 EXP)</option>
+                            <option value="1920000">Headhunter Grade 1 (1,920,000 EXP)</option>
+                            <option value="1440000">Headhunter Grade 2 (1,440,000 EXP)</option>
+                            <option value="2560000">Headhunter Grade 3 (2,560,000 EXP)</option>
+                            <option value="2880000">Headhunter Grade 3 Perak (2,880,000 EXP)</option>
+                            <option value="3200000">Headhunter Grade 3 Emas (3,200,000 EXP)</option>
+                            <option value="3520000">Commando Grade 1 (3,520,000 EXP)</option>
+                            <option value="3840000">Commando Grade 2 (3,840,000 EXP)</option>
+                            <option value="4160000">Commando Grade 3 (4,160,000 EXP)</option>
+                            <option value="4480000">Commando Grade 3 Perak (4,480,000 EXP)</option>
+                            <option value="4800000">Commando Grade 3 Emas (4,800,000 EXP)</option>
+                            <option value="5120000">Special Grade 1 (5,120,000 EXP)</option>
+                            <option value="5440000">Special Grade 2 (5,440,000 EXP)</option>
+                            <option value="6080000">Special Grade 3 (6,080,000 EXP)</option>
+                            <option value="7200000">Gunnery Grade 1 (7,200,000 EXP)</option>
+                            <option value="9200000">Gunnery Grade 2 (9,200,000 EXP)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2 font-medium">Target Pangkat Clan</label>
+                        <select id="targetClanRank" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="40000">Trainee Grade 2 (40,000 EXP)</option>
+                            <option value="48000">Trainee Grade 3 (48,000 EXP)</option>
+                            <option value="56000">Novice Grade 1 (56,000 EXP)</option>
+                            <option value="72000">Novice Grade 2 (72,000 EXP)</option>
+                            <option value="80000">Support Grade 1 (80,000 EXP)</option>
+                            <option value="120000">Support Grade 2 (120,000 EXP)</option>
+                            <option value="160000">Support Grade 3 (160,000 EXP)</option>
+                            <option value="120000">Excellent Grade 1 (120,000 EXP)</option>
+                            <option value="200000">Excellent Grade 2 (200,000 EXP)</option>
+                            <option value="240000">Excellent Grade 3 (240,000 EXP)</option>
+                            <option value="280000">Excellent Grade 4 (280,000 EXP)</option>
+                            <option value="320000">Blackfoot Grade 1 (320,000 EXP)</option>
+                            <option value="360000">Blackfoot Grade 2 (360,000 EXP)</option>
+                            <option value="360000">Blackfoot Grade 3 (360,000 EXP)</option>
+                            <option value="400000">Blackfoot Grade 4 (400,000 EXP)</option>
+                            <option value="480000">Spearhead Grade 1 (480,000 EXP)</option>
+                            <option value="560000">Spearhead Grade 2 (560,000 EXP)</option>
+                            <option value="640000">Spearhead Grade 3 (640,000 EXP)</option>
+                            <option value="720000">Spearhead Grade 3 Perak (720,000 EXP)</option>
+                            <option value="560000">Spearhead Grade 3 Emas (560,000 EXP)</option>
+                            <option value="640000">Assaulter Grade 1 (640,000 EXP)</option>
+                            <option value="720000">Assaulter Grade 2 (720,000 EXP)</option>
+                            <option value="800000">Assaulter Grade 3 (800,000 EXP)</option>
+                            <option value="880000">Assaulter Grade 3 Perak (880,000 EXP)</option>
+                            <option value="960000">Assaulter Grade 3 Emas (960,000 EXP)</option>
+                            <option value="1840000">Battletank Grade 1 (1,840,000 EXP)</option>
+                            <option value="1120000">Battletank Grade 2 (1,120,000 EXP)</option>
+                            <option value="1200000">Battletank Grade 3 (1,200,000 EXP)</option>
+                            <option value="1280000">Battletank Grade 3 Perak (1,280,000 EXP)</option>
+                            <option value="1600000">Battletank Grade 3 Emas (1,600,000 EXP)</option>
+                            <option value="1920000">Headhunter Grade 1 (1,920,000 EXP)</option>
+                            <option value="1440000">Headhunter Grade 2 (1,440,000 EXP)</option>
+                            <option value="2560000">Headhunter Grade 3 (2,560,000 EXP)</option>
+                            <option value="2880000">Headhunter Grade 3 Perak (2,880,000 EXP)</option>
+                            <option value="3200000">Headhunter Grade 3 Emas (3,200,000 EXP)</option>
+                            <option value="3520000">Commando Grade 1 (3,520,000 EXP)</option>
+                            <option value="3840000">Commando Grade 2 (3,840,000 EXP)</option>
+                            <option value="4160000">Commando Grade 3 (4,160,000 EXP)</option>
+                            <option value="4480000">Commando Grade 3 Perak (4,480,000 EXP)</option>
+                            <option value="4800000">Commando Grade 3 Emas (4,800,000 EXP)</option>
+                            <option value="5120000">Special Grade 1 (5,120,000 EXP)</option>
+                            <option value="5440000">Special Grade 2 (5,440,000 EXP)</option>
+                            <option value="6080000">Special Grade 3 (6,080,000 EXP)</option>
+                            <option value="7200000">Gunnery Grade 1 (7,200,000 EXP)</option>
+                            <option value="9200000">Gunnery Grade 2 (9,200,000 EXP)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-gray-700 mb-2 font-medium">EXP Clan Saat Ini</label>
+                    <input type="number" id="currentClanExp" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Masukkan EXP clan saat ini (opsional)">
+                </div>
+            </div>
+            
+            <div class="text-center mb-8">
+                <button onclick="calculateExp()" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition">
+                    Hitung EXP yang Dibutuhkan
+                </button>
+            </div>
+            
+            <div id="result" class="hidden bg-blue-50 rounded-xl p-6 text-center">
+                <h3 class="text-xl font-bold mb-2 text-blue-600">Hasil Perhitungan</h3>
+                <div class="text-3xl font-bold mb-4" id="expNeeded">0 EXP</div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                    <div class="bg-white p-3 rounded-lg">
+                        <div class="text-sm text-gray-600">Persentase EXP</div>
+                        <div class="font-bold" id="expPercentage">0%</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg">
+                        <div class="text-sm text-gray-600">Point yang Didapat</div>
+                        <div class="font-bold" id="expPoints">0 Point</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg">
+                        <div class="text-sm text-gray-600">Estimasi Harga</div>
+                        <div class="font-bold" id="priceEstimate">Rp 0</div>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#jasa" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition">
+                        <i class="bi bi-lightning-charge mr-2"></i> Pesan Jasa GB Sekarang
+                    </a>
+                    <button onclick="resetCalculator()" class="inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 px-6 py-2 rounded-lg font-medium transition">
+                        <i class="bi bi-arrow-repeat mr-2"></i> Hitung Lagi
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Pembayaran Section -->
 <section id="pembayaran" class="py-20 bg-white relative overflow-hidden">
     <div class="absolute -bottom-20 right-1/4 w-64 h-64 bg-blue-500 rounded-full filter blur-3xl opacity-10 -z-10"></div>
@@ -808,10 +1107,10 @@
                     </div>
                 </div>
                 <p class="text-gray-600 italic">
-                    "Jasa GB EXPnya recommended banget! Clan saya naik 10JT EXP dalam 2 hari. Adminnya ramah dan fast respon."
+                    "Jasa GB EXPnya recommended banget! EXP Akun saya naik 5JT EXP dalam 16 hari. Adminnya ramah dan fast respon."
                 </p>
                 <div class="mt-4 text-xs text-gray-400">
-                    <i class="bi bi-clock mr-1"></i> 1 minggu yang lalu
+                    <i class="bi bi-clock mr-1"></i> 1 hari yang lalu
                 </div>
             </div>
             
@@ -834,7 +1133,7 @@
                     "Sudah 3x beli Akun disini, selalu puas. Harganya terjangkau untuk kualitas Akun premium. Bakal beli lagi!"
                 </p>
                 <div class="mt-4 text-xs text-gray-400">
-                    <i class="bi bi-clock mr-1"></i> 3 minggu yang lalu
+                    <i class="bi bi-clock mr-1"></i> 3 hari yang lalu
                 </div>
             </div>
             
@@ -880,7 +1179,7 @@
                     "Akun yang saya beli sangat bagus, item lengkap sesuai deskripsi. Hanya saja respon CS agak lambat saat weekend."
                 </p>
                 <div class="mt-4 text-xs text-gray-400">
-                    <i class="bi bi-clock mr-1"></i> 2 minggu yang lalu
+                    <i class="bi bi-clock mr-1"></i> 2 hari yang lalu
                 </div>
             </div>
             
@@ -959,7 +1258,7 @@
                     "Proses pembelian sangat mudah dan cepat. Akun langsung bisa digunakan setelah pembayaran. Puas banget!"
                 </p>
                 <div class="mt-4 text-xs text-gray-400">
-                    <i class="bi bi-clock mr-1"></i> 1 minggu yang lalu
+                    <i class="bi bi-clock mr-1"></i> 1 hari yang lalu
                 </div>
             </div>
             
@@ -982,7 +1281,7 @@
                     "Jasa GB untuk clan sangat membantu. Harga bersaing dan hasil memuaskan. Akan gunakan lagi next time."
                 </p>
                 <div class="mt-4 text-xs text-gray-400">
-                    <i class="bi bi-clock mr-1"></i> 2 minggu yang lalu
+                    <i class="bi bi-clock mr-1"></i> 2 hari yang lalu
                 </div>
             </div>
         </div>
@@ -1280,7 +1579,7 @@
                             </li>
                             <li class="flex items-center">
                                 <i class="bi bi-check-circle-fill text-blue-500 mr-2"></i>
-                                ITEM FC QC/QR/HOLLOW/MEGA HP
+                                ITEM FC QC/QR/HOLLOW/MEGA HP/VEST
                             </li>
                             <li class="flex items-center">
                                 <i class="bi bi-check-circle-fill text-blue-500 mr-2"></i>
@@ -1370,249 +1669,7 @@
     </div>
 </div>
 
-<!-- Scripts -->
-<script>
-// Fungsi untuk tab system
-function openTab(tabId) {
-    // Sembunyikan semua tab content
-    const tabContents = document.querySelectorAll('.tab-content');
-    tabContents.forEach(content => {
-        content.classList.add('hidden');
-    });
-    
-    // Tampilkan tab yang dipilih
-    document.getElementById(tabId).classList.remove('hidden');
-    
-    // Update style tab button
-    const tabButtons = document.querySelectorAll('.tab-button');
-    tabButtons.forEach(button => {
-        button.classList.remove('text-blue-600', 'border-b-2', 'border-blue-600');
-        button.classList.add('text-gray-500');
-    });
-    
-    // Aktifkan tab yang dipilih
-    event.currentTarget.classList.add('text-blue-600', 'border-b-2', 'border-blue-600');
-    event.currentTarget.classList.remove('text-gray-500');
-}
 
-// Update form submission untuk kirim invoice ke WhatsApp
-document.getElementById('paymentForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const productName = document.getElementById('productName').textContent;
-    const productCode = document.getElementById('productCode').textContent;
-    const totalPrice = document.getElementById('totalPrice').textContent;
-    const customerName = document.getElementById('customerName').value;
-    const whatsappNumber = document.getElementById('whatsappNumber').value;
-    const paymentMethod = document.getElementById('paymentMethod').value;
-    
-    // Format nomor WhatsApp (hapus +62 atau 0 di depan)
-    let formattedNumber = whatsappNumber.replace(/^\+62/, '').replace(/^0/, '');
-    if (!formattedNumber.startsWith('62') && !formattedNumber.startsWith('0')) {
-        formattedNumber = '62' + formattedNumber;
-    }
-    formattedNumber = formattedNumber.replace(/\D/g, '');
-    
-    // Buat pesan invoice
-    const invoiceMessage = `Halo UNSTOREPB,\n\nSaya ingin membeli produk berikut:\n\n` +
-                        `*Nama Produk:* ${productName}\n` +
-                        `*Kode Akun:* ${productCode}\n` +
-                        `*Total Pembayaran:* ${totalPrice}\n` +
-                        `*Metode Pembayaran:* ${document.getElementById('paymentMethod').options[document.getElementById('paymentMethod').selectedIndex].text}\n\n` +
-                        `*Data Pembeli:*\n` +
-                        `Nama: ${customerName}\n` +
-                        `WhatsApp: ${whatsappNumber}\n\n` +
-                        `Mohon kirimkan detail pembayaran dan nomor rekening untuk proses selanjutnya.`;
-    
-    // Encode message untuk URL
-    const encodedMessage = encodeURIComponent(invoiceMessage);
-    
-    // Redirect ke WhatsApp dengan pesan invoice
-    window.open(`https://wa.me/6285117631802?text=${encodedMessage}`, '_blank');
-    
-    // Tutup modal
-    closeModal();
-});
-
-// Update fungsi showPaymentModal untuk menerima harga
-function showPaymentModal(name, price, code) {
-    const modal = document.getElementById('paymentModal');
-    document.getElementById('productName').textContent = name;
-    document.getElementById('productCode').textContent = code;
-    document.getElementById('productPrice').textContent = 'Rp ' + price.toLocaleString('id-ID');
-    document.getElementById('totalPrice').textContent = 'Rp ' + price.toLocaleString('id-ID');
-    modal.classList.remove('hidden');
-}
-
-// Update fungsi showDetailModal
-function showDetailModal(name, code, price = 0, driveLink = '') {
-    const modal = document.getElementById('detailModal');
-    document.getElementById('detailProductName').textContent = name;
-    document.getElementById('detailProductCode').textContent = code;
-    
-    // Set data produk berdasarkan nama
-    if (name.includes('M1UF45')) {
-        document.getElementById('detailRank').textContent = 'Major 1';
-        document.getElementById('detailItems').textContent = '440+';
-    } else if (name.includes('M1UF55')) {
-        document.getElementById('detailRank').textContent = 'Major 1';
-        document.getElementById('detailItems').textContent = '450+';
-    } else if (name.includes('B1UF160')) {
-        document.getElementById('detailRank').textContent = 'Bintang 1';
-        document.getElementById('detailItems').textContent = '630+';
-    } else if (name.includes('M1UF190')) {
-        document.getElementById('detailRank').textContent = 'Major 1';
-        document.getElementById('detailItems').textContent = '550+';
-    } else if (name.includes('M1UF220')) {
-        document.getElementById('detailRank').textContent = 'Major 1';
-        document.getElementById('detailItems').textContent = '620+';
-    } else if (name.includes('M1UF65')) {
-        document.getElementById('detailRank').textContent = 'Major 1';
-        document.getElementById('detailItems').textContent = '550+';
-    }
-    
-    // Update link Google Drive
-    const driveLinkElement = document.getElementById('driveLink');
-    if (driveLink) {
-        driveLinkElement.href = driveLink;
-        driveLinkElement.style.display = 'block';
-        document.querySelector('#tab3 p').style.display = 'block';
-    } else {
-        driveLinkElement.style.display = 'none';
-        document.querySelector('#tab3 p').style.display = 'none';
-    }
-    
-    // Set tombol beli
-    const buyBtn = document.getElementById('buyFromDetailBtn');
-    buyBtn.onclick = function() {
-        closeDetailModal();
-        showPaymentModal(name, price, code);
-    };
-    
-    modal.classList.remove('hidden');
-    
-    // Reset tab ke pertama
-    openTab('tab1');
-}
-
-function showGBModal(service) {
-    const modal = document.getElementById('gbModal');
-    document.getElementById('gbServiceName').textContent = service;
-    // Set WhatsApp link with pre-filled message
-    const whatsappLink = document.getElementById('gbWhatsAppLink');
-    const message = `Halo, saya ingin pesan jasa ${encodeURIComponent(service)}. Mohon info ketersediaan dan detailnya.`;
-    whatsappLink.href = `https://wa.me/6285117631802?text=${message}`;
-    modal.classList.remove('hidden');
-}
-
-function closeModal() {
-    document.getElementById('paymentModal').classList.add('hidden');
-}
-
-function closeDetailModal() {
-    document.getElementById('detailModal').classList.add('hidden');
-}
-
-function closeGBModal() {
-    document.getElementById('gbModal').classList.add('hidden');
-}
-
-// Show more products
-function showMoreProducts() {
-    const moreProducts = document.getElementById('moreProducts');
-    const button = event.currentTarget;
-    
-    if (moreProducts.classList.contains('hidden')) {
-        moreProducts.classList.remove('hidden');
-        button.innerHTML = '<i class="bi bi-arrow-up-circle mr-2"></i> Sembunyikan';
-    } else {
-        moreProducts.classList.add('hidden');
-        button.innerHTML = '<i class="bi bi-arrow-down-circle mr-2"></i> Lihat Lebih Banyak Akun';
-    }
-}
-
-// Show more testimonials
-function showMoreTestimonials() {
-    const moreTestimonials = document.getElementById('moreTestimonials');
-    const button = event.currentTarget;
-    
-    if (moreTestimonials.classList.contains('hidden')) {
-        moreTestimonials.classList.remove('hidden');
-        button.innerHTML = '<i class="bi bi-arrow-up-circle mr-2"></i> Sembunyikan';
-    } else {
-        moreTestimonials.classList.add('hidden');
-        button.innerHTML = '<i class="bi bi-arrow-down-circle mr-2"></i> Lihat Lebih Banyak Testimoni';
-    }
-}
-
-// Close modals when clicking outside
-window.onclick = function(event) {
-    const paymentModal = document.getElementById('paymentModal');
-    const detailModal = document.getElementById('detailModal');
-    const gbModal = document.getElementById('gbModal');
-    
-    if (event.target == paymentModal) {
-        closeModal();
-    }
-    if (event.target == detailModal) {
-        closeDetailModal();
-    }
-    if (event.target == gbModal) {
-        closeGBModal();
-    }
-}
-
-// FAQ Toggle
-function toggleFAQ(num) {
-    const content = document.getElementById(`faqContent${num}`);
-    const icon = document.getElementById(`faqIcon${num}`);
-    
-    if (content.style.maxHeight) {
-        content.style.maxHeight = null;
-        icon.classList.remove('rotate-180');
-    } else {
-        content.style.maxHeight = content.scrollHeight + "px";
-        icon.classList.add('rotate-180');
-    }
-}
-
-// Mobile Menu Toggle
-const menuBtn = document.getElementById('menuBtn');
-const mobileMenu = document.getElementById('mobileMenu');
-menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-    menuBtn.innerHTML = mobileMenu.classList.contains('hidden') ? 
-        '<i class="bi bi-list"></i>' : '<i class="bi bi-x-lg"></i>';
-});
-
-// Close mobile menu when clicking a link
-document.querySelectorAll('#mobileMenu a').forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        menuBtn.innerHTML = '<i class="bi bi-list"></i>';
-    });
-});
-
-// Hide loading screen when page is loaded
-window.addEventListener('load', function() {
-    document.getElementById('loadingScreen').style.display = 'none';
-});
-
-// Show WhatsApp popup after 5 seconds
-setTimeout(function() {
-        // Check if user has already seen the popup today
-        if (!localStorage.getItem('whatsappPopupShown') || 
-            localStorage.getItem('whatsappPopupShown') !== new Date().toDateString()) {
-            
-            document.getElementById('whatsappPopup').style.display = 'block';
-            localStorage.setItem('whatsappPopupShown', new Date().toDateString());
-        }
-    }, 5000);
-
-    // Close WhatsApp popup
-    function closeWhatsappPopup() {
-        document.getElementById('whatsappPopup').style.display = 'none';
-    }
-</script>
+<script src="js/script.js"></script>
 </body>
 </html>
