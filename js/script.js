@@ -48,7 +48,7 @@ document.getElementById('paymentForm').addEventListener('submit', function(e) {
                         `*Data Pembeli:*\n` +
                         `Nama: ${customerName}\n` +
                         `WhatsApp: ${whatsappNumber}\n\n` +
-                        `Mohon kirimkan detail pembayaran dan nomor rekening untuk proses selanjutnya.`;
+                        `Mohon kirimkan detail pembayaran dan nomor rekening untuk saya trasfer.`;
     
     // Encode message untuk URL
     const encodedMessage = encodeURIComponent(invoiceMessage);
@@ -102,10 +102,10 @@ function showDetailModal(name, code, price = 0, driveLink = '') {
     if (driveLink) {
         driveLinkElement.href = driveLink;
         driveLinkElement.style.display = 'block';
-        document.querySelector('#tab3 p').style.display = 'block';
+        document.querySelector('#tab1 p').style.display = 'block';
     } else {
         driveLinkElement.style.display = 'none';
-        document.querySelector('#tab3 p').style.display = 'none';
+        document.querySelector('#tab1 p').style.display = 'none';
     }
     
     // Set tombol beli
@@ -126,7 +126,7 @@ function showGBModal(service) {
     document.getElementById('gbServiceName').textContent = service;
     // Set WhatsApp link with pre-filled message
     const whatsappLink = document.getElementById('gbWhatsAppLink');
-    const message = `Halo, saya ingin pesan jasa ${encodeURIComponent(service)}. Mohon info ketersediaan dan detailnya.`;
+    const message = `Halo UNSTOREPB\n\n, saya ingin pesan jasa ${encodeURIComponent(service)}.\n\nMohon info syarat & ketentuan gb dan daftar harganya.`;
     whatsappLink.href = `https://wa.me/6285117631802?text=${message}`;
     modal.classList.remove('hidden');
 }
