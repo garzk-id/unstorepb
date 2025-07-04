@@ -1599,11 +1599,33 @@
                 <!-- Tab Spesifikasi -->
                 <div class="mt-6">
                     <div class="flex border-b border-gray-200">
-                        <button class="tab-button py-2 px-4 font-medium text-blue-600 border-b-2 border-blue-600" onclick="openTab('tab1')">Screenshot Akun</button>
+                        <button class="tab-button py-2 px-4 font-medium text-blue-600 border-b-2 border-blue-600" onclick="openTab('tab1')">Spek Singkat</button>
+                        <button class="tab-button py-2 px-4 font-medium text-blue-600 border-b-2 border-blue-600" onclick="openTab('tab3')">Screenshot Akun</button>
                     </div>
                     
                     <!-- Tab Content 1 -->
                     <div id="tab1" class="tab-content py-4">
+                        <ul class="space-y-2 text-gray-600">
+                            <li class="flex items-center">
+                                <i class="bi bi-check-circle-fill text-blue-500 mr-2"></i>
+                                ASSAULT/SMG/AWP/SG RAME
+                            </li>
+                            <li class="flex items-center">
+                                <i class="bi bi-check-circle-fill text-blue-500 mr-2"></i>
+                                ITEM FC QC/QR/HOLLOW/MEGA HP/VEST
+                            </li>
+                            <li class="flex items-center">
+                                <i class="bi bi-check-circle-fill text-blue-500 mr-2"></i>
+                                FULL TITLE
+                            </li>
+                            <li class="flex items-center">
+                                <i class="bi bi-check-circle-fill text-blue-500 mr-2"></i>
+                                DATA POLOS
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div id="tab3" class="tab-content py-4 hidden">
                         <div class="flex justify-center">
                             <a id="driveLink" href="#" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition flex items-center justify-center">
                                 <i class="bi bi-google-drive mr-2"></i> Lihat Spesifikasi Lengkap
@@ -1613,14 +1635,14 @@
                     </div>
                 </div>
                 
-                <div class="bg-blue-50 p-5 rounded-xl border border-blue-100">
+                <!--<div class="bg-blue-50 p-5 rounded-xl border border-blue-100">
                     <h4 class="font-bold text-blue-600 mb-3 flex items-center">
                         <i class="bi bi-info-circle-fill mr-2"></i> Informasi Tambahan:
                     </h4>
                     <p class="text-sm text-gray-600">
                         Akun sudah dipastikan data polos dan pastinya
                     </p>
-                </div>
+                </div>-->
             </div>
             <div class="flex space-x-3">
                 <button onclick="closeDetailModal()" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 py-3 rounded-lg font-medium transition">
