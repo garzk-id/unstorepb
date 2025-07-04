@@ -297,14 +297,14 @@ function calculateExp() {
         
         const expNeeded = targetRank - currentExp;
         const expPercentage = Math.round((currentExp / targetRank) * 100);
-        const expPoints = Math.round(expNeeded * 0.05); // Assuming 0.05 point per EXP for clan
+        // const expPoints = Math.round(expNeeded * 0.05); // Assuming 0.05 point per EXP for clan
         
-        // Estimate price (60,000 IDR per 5M EXP for clan)
+        // Estimate price (60,000 IDR per 5JT EXP for clan)
         const priceEstimate = Math.ceil(expNeeded / 5000000 * 60000);
         
         document.getElementById('expNeeded').textContent = formatNumber(expNeeded) + ' EXP';
         document.getElementById('expPercentage').textContent = expPercentage + '%';
-        document.getElementById('expPoints').textContent = formatNumber(expPoints) + ' Point';
+        // document.getElementById('expPoints').textContent = formatNumber(expPoints) + ' Point';
         document.getElementById('priceEstimate').textContent = 'Rp ' + formatNumber(priceEstimate);
     }
     
