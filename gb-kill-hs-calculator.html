@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kalkulator untuk menghitung kill, death dan hs setelah GB">
+    <meta name="keywords" content="unstorepb, unstorepb jasa gb, jasa gb, char pb murah meriah">
+    <meta name="author" content="garzk.id">
+    <title>Kalkulator GB Kill HS - UNSTOREPB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/x-icon" href="/images/UNSTOREPB.png">
+</head>
+<body class="bg-gray-50 font-sans overflow-x-hidden">
+
+<!-- Navbar -->
+<nav id="navbar" class="bg-blue-900 text-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <a href="index.html" class="text-xl font-bold text-white">UNSTOREPB</a>
+        </div>
+        <div class="hidden md:flex space-x-6 items-center">
+            <a href="index.html#produk" class="hover:text-blue-300 transition flex items-center">
+                <i class="bi bi-controller mr-1"></i> 
+                <span>Akun PB</span>
+            </a>
+            <a href="index.html#jasa" class="hover:text-blue-300 transition flex items-center">
+                <i class="bi bi-lightning-charge mr-1"></i> 
+                <span>Jasa GB</span>
+            </a>
+            <a href="gb-exp-calculator.html" class="hover:text-blue-300 transition flex items-center">
+                <i class="bi bi-calculator mr-1"></i> 
+                <span>Kalkulator EXP</span>
+            </a>
+            <a href="gb-kill-hs-calculator.html" class="hover:text-blue-300 transition flex items-center bg-blue-800 px-3 py-1 rounded-lg">
+                <i class="bi bi-calculator mr-1"></i> 
+                <span>Kalkulator Kill HS</span>
+            </a>
+            <a href="gb-kill-badan-calculator.html" class="hover:text-blue-300 transition flex items-center">
+                <i class="bi bi-calculator mr-1"></i> 
+                <span>Kalkulator Kill Badan</span>
+            </a>
+            <a href="index.html#pembayaran" class="hover:text-blue-300 transition flex items-center">
+                <i class="bi bi-credit-card mr-1"></i> 
+                <span>Pembayaran</span>
+            </a>
+            <a href="index.html#cs" class="hover:text-blue-300 transition flex items-center">
+                <i class="bi bi-headset mr-1"></i> 
+                <span>Kontak</span>
+            </a>
+        </div>
+        <button class="md:hidden text-2xl hover:text-blue-300 transition" id="menuBtn">
+            <i class="bi bi-list"></i>
+        </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div class="md:hidden hidden bg-blue-900/95 px-4 py-2 backdrop-blur-sm" id="mobileMenu">
+        <a href="index.html#produk" class="block py-3 hover:text-blue-300 transition flex items-center border-b border-blue-800">
+            <i class="bi bi-controller mr-2"></i> Akun PB 
+        </a>
+        <a href="index.html#jasa" class="block py-3 hover:text-blue-300 transition flex items-center border-b border-blue-800">
+            <i class="bi bi-lightning-charge mr-2"></i> Jasa GB 
+        </a>
+        <a href="gb-exp-calculator.html" class="block py-3 hover:text-blue-300 transition flex items-center border-b border-blue-800">
+            <i class="bi bi-calculator mr-2"></i> Kalkulator EXP
+        </a>
+        <a href="gb-kill-calculator.html" class="block py-3 hover:text-blue-300 transition flex items-center border-b border-blue-800">
+            <i class="bi bi-calculator mr-2"></i> Kalkulator Kill
+        </a>
+        <a href="gb-kill-hs-calculator.html" class="block py-3 hover:text-blue-300 transition flex items-center border-b border-blue-800 bg-blue-800 px-3 rounded-lg">
+            <i class="bi bi-calculator mr-2"></i> Kalkulator Kill HS
+        </a>
+        <a href="index.html#pembayaran" class="block py-3 hover:text-blue-300 transition flex items-center border-b border-blue-800">
+            <i class="bi bi-credit-card mr-2"></i> Pembayaran 
+        </a>
+        <a href="index.html#cs" class="block py-3 hover:text-blue-300 transition flex items-center">
+            <i class="bi bi-headset mr-2"></i> Kontak 
+        </a>
+    </div>
+</nav>
+
+<!-- Calculator Section -->
+<section class="py-20 bg-white relative overflow-hidden">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                <span class="text-stroke">Kalkulator</span> <span class="gradient-text">GB Kill HS</span>
+            </h2>
+            <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                Hitung statistik kill, death, dan headshot setelah GB
+            </p>
+        </div>
+        
+        <div class="max-w-2xl mx-auto bg-gray-50 rounded-2xl p-8 shadow-md">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div>
+                    <label class="block text-gray-700 mb-2 font-medium">Jumlah Kill Sekarang</label>
+                    <input type="number" id="kill" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Masukkan jumlah kill">
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2 font-medium">Jumlah Death Sekarang</label>
+                    <input type="number" id="death" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Masukkan jumlah death">
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div>
+                    <label class="block text-gray-700 mb-2 font-medium">Persentase HS Sekarang (%)</label>
+                    <input type="number" id="perhs" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Masukkan persentase HS">
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2 font-medium">Order GB Kill</label>
+                    <input type="number" id="qty" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Masukkan jumlah kill yang ingin diGB">
+                </div>
+            </div>
+            
+            <div class="text-center mb-8">
+                <button onclick="hitung()" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition">
+                    Hitung Statistik
+                </button>
+            </div>
+            
+            <div id="resultSection" class="hidden bg-blue-50 rounded-xl p-6">
+                <h3 class="text-xl font-bold mb-6 text-blue-600 text-center">Hasil Perhitungan Statistik</h3>
+                
+                <!-- Before GB -->
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold mb-4 text-gray-800 border-b pb-2">Statistik Saat Ini</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-sm text-gray-600 mb-1">Total Kill</div>
+                            <div class="text-xl font-bold" id="currentKill">0</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-sm text-gray-600 mb-1">Total Death</div>
+                            <div class="text-xl font-bold" id="currentDeath">0</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-sm text-gray-600 mb-1">Total Headshot</div>
+                            <div class="text-xl font-bold" id="currentHS">0</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-sm text-gray-600 mb-1">Persentase KD</div>
+                            <div class="text-xl font-bold" id="perkd">0%</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-sm text-gray-600 mb-1">Persentase HS</div>
+                            <div class="text-xl font-bold" id="currentHSPer">0%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- After GB -->
+                <div class="mb-6">
+                    <h4 class="text-lg font-semibold mb-4 text-gray-800 border-b pb-2">Statistik Setelah GB</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-sm text-gray-600 mb-1">Total Kill</div>
+                            <div class="text-xl font-bold" id="afterKill">0</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-sm text-gray-600 mb-1">Total Death</div>
+                            <div class="text-xl font-bold" id="afterDeath">0</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-sm text-gray-600 mb-1">Total Headshot</div>
+                            <div class="text-xl font-bold" id="afterHS">0</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-sm text-gray-600 mb-1">Persentase KD</div>
+                            <div class="text-xl font-bold" id="perkdgb">0%</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-sm text-gray-600 mb-1">Persentase HS</div>
+                            <div class="text-xl font-bold" id="perhsgb">0%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6 text-left rounded-r-lg">
+                    <div class="flex">
+                        <div class="flex-shrink-0 text-yellow-500">
+                            <i class="bi bi-info-circle-fill text-xl"></i>
+                        </div>
+                        <div class="ml-3">
+                            <h4 class="text-sm font-medium text-yellow-800">Informasi Penting</h4>
+                            <div class="mt-2 text-sm text-yellow-700">
+                                <ul class="list-disc pl-5 space-y-1">
+                                    <li>Semua kill GB akan dihitung sebagai headshot</li>
+                                    <li>Minimal order jasa GB Kill HS: <span class="font-bold">50.000 Kill</span></li>
+                                    <li>Untuk informasi harga, silakan hubungi admin</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="https://wa.me/6281318260993" class="inline-block bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-medium transition">
+                        <i class="bi bi-whatsapp mr-2"></i> Pesan Jasa GB Sekarang
+                    </a>
+                    <button onclick="resetCalculator()" class="inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 px-6 py-2 rounded-lg font-medium transition">
+                        <i class="bi bi-arrow-repeat mr-2"></i> Hitung Lagi
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-16">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div>
+                <div class="flex items-center space-x-3 mb-6">
+                    <img src="images/UNSTOREPB.png" alt="UNSTOREPB Logo" class="w-32 h-32">
+                </div>
+                <span class="text-2xl font-bold text-white">UNSTOREPB</span>
+                <p class="text-gray-400">
+                    Melayani dan Menjual kebutuhan game pointblank seperti Menjual Akun PB Murah Meriah, Jasa GB, Top UP sejak 2023 dan sudah memiliki banyak testimoni.
+                </p>
+                <div class="flex space-x-4 mt-6">
+                    <a href="https://facebook.com/unstorepb" class="text-gray-400 hover:text-blue-400 transition text-xl">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    <a href="https://instagram.com/unstorepb" class="text-gray-400 hover:text-blue-400 transition text-xl">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a href="https://t.me/unstorepb" class="text-gray-400 hover:text-blue-400 transition text-xl">
+                        <i class="bi bi-telegram"></i>
+                    </a>
+                    <a href="https://bit.ly/UNSTOREPBGroupWA" class="text-gray-400 hover:text-blue-400 transition text-xl">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+                    <a href="https://youtube.com/@unstorepb" class="text-gray-400 hover:text-blue-400 transition text-xl">
+                        <i class="bi bi-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6">Kalkulator</h4>
+                <ul class="space-y-3">
+                    <li>
+                        <a href="gb-exp-calculator.html" class="text-gray-400 hover:text-blue-400 transition flex items-center">
+                            <i class="bi bi-arrow-right-short mr-2"></i> Kalkulator GB EXP
+                        </a>
+                    </li>
+                    <li>
+                        <a href="gb-kill-hs-calculator.html" class="text-gray-400 hover:text-blue-400 transition flex items-center">
+                            <i class="bi bi-arrow-right-short mr-2"></i> Kalkulator GB Kill HS
+                        </a>
+                    </li>
+                    <li>
+                        <a href="gb-kill-badan-calculator.html" class="text-gray-400 hover:text-blue-400 transition flex items-center">
+                            <i class="bi bi-arrow-right-short mr-2"></i> Kalkulator GB Kill Badan
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6">Jasa GB</h4>
+                <ul class="space-y-3">
+                    <li>
+                        <a href="index.html#jasa" class="text-gray-400 hover:text-blue-400 transition flex items-center">
+                            <i class="bi bi-arrow-right-short mr-2"></i> GB EXP Akun
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html#jasa" class="text-gray-400 hover:text-blue-400 transition flex items-center">
+                            <i class="bi bi-arrow-right-short mr-2"></i> GB EXP Clan
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html#jasa" class="text-gray-400 hover:text-blue-400 transition flex items-center">
+                            <i class="bi bi-arrow-right-short mr-2"></i> GB Battle Pass
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html#jasa" class="text-gray-400 hover:text-blue-400 transition flex items-center">
+                            <i class="bi bi-arrow-right-short mr-2"></i> GB Full Title
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6">Kontak</h4>
+                <ul class="space-y-3">
+                    <li class="flex items-center">
+                        <i class="bi bi-whatsapp text-blue-400 mr-3"></i>
+                        <span class="text-gray-400">+6281318260993</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="bi bi-whatsapp text-blue-400 mr-3"></i>
+                        <span class="text-gray-400">+6285117631803</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="bi bi-telegram text-blue-400 mr-3"></i>
+                        <span class="text-gray-400">@unstorepb</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="bi bi-envelope text-blue-300 mr-3"></i>
+                        <span class="text-gray-400">unstorepb@gmail.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+            <p>
+                &copy; 2023 UNSTOREPB. All rights reserved.
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Calculator function
+    function hitung() {
+        var kill = document.getElementById('kill').value || 0;
+        var death = document.getElementById('death').value || 0;
+        var perhs = document.getElementById('perhs').value || 0;
+        kill = parseFloat(kill);
+        death = parseFloat(death);
+        perhs = parseFloat(perhs);
+        
+        if (kill === 0 && death === 0) {
+            alert('Masukkan jumlah kill dan death terlebih dahulu');
+            return;
+        }
+        
+        if (perhs === 0) {
+            alert('Masukkan persentase HS terlebih dahulu');
+            return;
+        }
+        
+        // Calculate current stats
+        var currentHS = Math.round(kill * perhs / 100);
+        var currentKD = (kill / (kill + death) * 100).toFixed(2);
+        
+        // Set current stats
+        document.getElementById("currentKill").textContent = kill.toLocaleString();
+        document.getElementById("currentDeath").textContent = death.toLocaleString();
+        document.getElementById("currentHS").textContent = currentHS.toLocaleString();
+        document.getElementById("perkd").textContent = currentKD + '%';
+        document.getElementById("currentHSPer").textContent = perhs + '%';
+        
+        // Calculate after GB
+        var gb = document.getElementById("qty").value || 0;
+        gb = parseFloat(gb);
+        
+        if (gb === 0) {
+            alert('Masukkan jumlah kill yang ingin diGB');
+            return;
+        }
+        
+        var afterKill = kill + gb;
+        var afterHS = currentHS + gb; // All GB kills are headshots
+        var afterKD = (afterKill / (afterKill + death) * 100).toFixed(2);
+        var afterHSPer = (afterHS / afterKill * 100).toFixed(2);
+        
+        // Set after GB stats
+        document.getElementById("afterKill").textContent = afterKill.toLocaleString();
+        document.getElementById("afterDeath").textContent = death.toLocaleString();
+        document.getElementById("afterHS").textContent = afterHS.toLocaleString();
+        document.getElementById("perkdgb").textContent = afterKD + '%';
+        document.getElementById("perhsgb").textContent = afterHSPer + '%';
+        
+        // Show result section
+        document.getElementById('resultSection').classList.remove('hidden');
+    }
+    
+    // Reset calculator
+    function resetCalculator() {
+        document.getElementById('kill').value = '';
+        document.getElementById('death').value = '';
+        document.getElementById('perhs').value = '';
+        document.getElementById('qty').value = '';
+        document.getElementById('resultSection').classList.add('hidden');
+    }
+</script>
+</body>
+</html>
