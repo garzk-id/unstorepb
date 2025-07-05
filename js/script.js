@@ -202,24 +202,51 @@ function toggleFAQ(num) {
     }
 }
 
-// Mobile Menu Toggle
-const menuBtn = document.getElementById('menuBtn');
-const mobileMenu = document.getElementById('mobileMenu');
-menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-    menuBtn.innerHTML = mobileMenu.classList.contains('hidden') ? 
-        '<i class="bi bi-list"></i>' : '<i class="bi bi-x-lg"></i>';
-});
-
-// Close mobile menu when clicking a link
-document.querySelectorAll('#mobileMenu a').forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        menuBtn.innerHTML = '<i class="bi bi-list"></i>';
-    });
-});
-
 // Hide loading screen when page is loaded
 window.addEventListener('load', function() {
     document.getElementById('loadingScreen').style.display = 'none';
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle functionality
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+
+    // Submenu toggle functionality
+    function setupSubmenuToggle(buttonId, menuId, iconId) {
+        const button = document.getElementById(buttonId);
+        const menu = document.getElementById(menuId);
+        const icon = document.getElementById(iconId);
+        
+        if (button && menu && icon) {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                menu.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        }
+    }
+
+    // Initialize all submenu toggles
+    setupSubmenuToggle('gbSubmenuButton', 'gbSubmenu', 'gbChevron');
+    
+    // Remove all inline onclick handlers from HTML
+    document.querySelectorAll('[onclick^="toggleSubMenu"]').forEach(element => {
+        element.removeAttribute('onclick');
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+            if (!event.target.closest('#navbar') && !event.target.closest('#mobileMenu')) {
+                mobileMenu.classList.add('hidden');
+            }
+        }
+    });
 });
