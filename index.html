@@ -984,7 +984,7 @@
                     </div>
                 </div>
                 <p class="text-gray-600 italic">
-                    "Akun PB Elite yang saya beli sangat worth it! Item lengkap, level tinggi, dan harga terjangkau. Recommended!"
+                    "Akun PB Major yang saya beli sangat worth it! Item lengkap, dan harga terjangkau. Recommended!"
                 </p>
                 <div class="mt-4 text-xs text-gray-400">
                     <i class="bi bi-clock mr-1"></i> 3 hari yang lalu
@@ -1249,44 +1249,136 @@
                     <i class="bi bi-x-lg"></i>
                 </button>
             </div>
-            <div class="mb-6 sm:mb-8">
-                <div class="flex justify-between items-center py-3 border-b border-gray-100">
-                    <span class="text-gray-600">Kode Akun:</span>
-                    <span class="font-semibold text-gray-800 text-sm sm:text-base" id="productCode"></span>
+            
+            <!-- Step 1: Payment Form -->
+            <div id="paymentFormStep">
+                <div class="mb-6 sm:mb-8">
+                    <div class="flex justify-between items-center py-3 border-b border-gray-100">
+                        <span class="text-gray-600">Kode Akun:</span>
+                        <span class="font-semibold text-gray-800 text-sm sm:text-base" id="productCode"></span>
+                    </div>
+                    <div class="flex justify-between items-center py-3 border-b border-gray-100">
+                        <span class="text-gray-600">Harga:</span>
+                        <span class="font-semibold text-gray-800 text-sm sm:text-base" id="productPrice"></span>
+                    </div>
+                    <div class="flex justify-between items-center py-3 text-lg font-bold bg-blue-50 px-4 py-4 rounded-lg mt-4">
+                        <span class="text-sm sm:text-base">Total:</span>
+                        <span id="totalPrice" class="text-blue-600 text-sm sm:text-base"></span>
+                    </div>
                 </div>
-                <div class="flex justify-between items-center py-3 border-b border-gray-100">
-                    <span class="text-gray-600">Harga:</span>
-                    <span class="font-semibold text-gray-800 text-sm sm:text-base" id="productPrice"></span>
+                <form id="paymentForm">
+                    <div class="mb-4 sm:mb-5">
+                        <label class="block text-gray-700 mb-2 font-medium text-sm sm:text-base">Nomor WhatsApp</label>
+                        <input type="tel" id="whatsappNumber" class="w-full px-4 sm:px-5 py-2 sm:py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base" placeholder="Contoh: 08123456789" required>
+                        <p class="text-xs text-gray-500 mt-2">Invoice akan dikirim ke nomor ini</p>
+                    </div>
+                    <div class="mb-4 sm:mb-6">
+                        <label class="block text-gray-700 mb-2 font-medium text-sm sm:text-base">Metode Pembayaran</label>
+                        <select id="paymentMethod" class="w-full px-4 sm:px-5 py-2 sm:py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none text-sm sm:text-base" required>
+                            <option value="">Pilih metode</option>
+                            <option value="qris">QRIS</option>
+                            <option value="bri">Bank BRI</option>
+                            <option value="bca">Bank BCA</option>
+                            <option value="ovo">OVO</option>
+                            <option value="dana">DANA</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 sm:py-4 rounded-xl font-medium transition flex items-center justify-center text-sm sm:text-base">
+                        <i class="bi bi-whatsapp mr-2"></i> Lanjutkan Pembayaran
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Step 2: QRIS Payment -->
+            <div id="qrisPaymentStep" class="hidden">
+                <div class="text-center mb-6">
+                    <p class="text-gray-600">Scan QRIS dibawah untuk menyelesaikan pembayaran</p>
                 </div>
-                <div class="flex justify-between items-center py-3 text-lg font-bold bg-blue-50 px-4 py-4 rounded-lg mt-4">
-                    <span class="text-sm sm:text-base">Total:</span>
-                    <span id="totalPrice" class="text-blue-600 text-sm sm:text-base"></span>
+                
+                <div class="flex justify-center mb-6">
+                    <img src="images/payment/QRIS.jpg" alt="QRIS Payment" class="w-40 h-40 border border-gray-200 rounded-lg">
+                </div>
+                
+                <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-gray-700 font-medium">Total Pembayaran:</span>
+                        <span id="qrisTotalPrice" class="font-bold text-blue-600"></span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700 font-medium">Batas Waktu:</span>
+                        <span id="paymentCountdown" class="font-bold text-red-500">05:00</span>
+                    </div>
+                </div>
+                
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <i class="bi bi-exclamation-triangle-fill text-yellow-400"></i>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm text-yellow-700">
+                                Harap selesaikan pembayaran dalam waktu <span class="font-bold">5 menit</span>. Jika tidak, pesanan akan dibatalkan secara otomatis.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="backToPaymentForm()" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 py-3 rounded-xl font-medium transition flex items-center justify-center mb-3">
+                    <i class="bi bi-arrow-left mr-2"></i> Ganti Metode Pembayaran
+                </button>
+                
+                <button onclick="checkPaymentStatus()" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-medium transition flex items-center justify-center">
+                    <i class="bi bi-check-circle mr-2"></i> Saya Sudah Bayar
+                </button>
+            </div>
+            
+            <!-- Step 3: Payment Expired -->
+            <div id="paymentExpiredStep" class="hidden text-center">
+                <div class="mb-6">
+                    <div class="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="bi bi-x-circle-fill text-red-500 text-4xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2 text-red-600">Pembayaran Kadaluarsa</h4>
+                    <p class="text-gray-600">Waktu pembayaran telah habis. Silahkan ulangi proses pembayaran.</p>
+                </div>
+                
+                <button onclick="restartPayment()" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-medium transition flex items-center justify-center">
+                    <i class="bi bi-arrow-repeat mr-2"></i> Ulangi Pembayaran
+                </button>
+            </div>
+
+            <!-- Step 4: Payment Success -->
+            <div id="paymentSuccessStep" class="hidden text-center">
+                <div class="mb-6">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="bi bi-check-circle-fill text-green-500 text-4xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2 text-green-600">Pembayaran Berhasil!</h4>
+                    <p class="text-gray-600 mb-4">Terima kasih telah melakukan pembayaran. Kami akan segera memproses pesanan Anda.</p>
+                    
+                    <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6 text-left">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-info-circle-fill text-green-400"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-green-700">
+                                    Silahkan pencet tombol WhatsApp dan kirim bukti transfer ke admin untuk konfirmasi pesanan anda.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex space-x-3">
+                    <button onclick="closeModal()" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 py-3 rounded-xl font-medium transition">
+                        <i class="bi bi-x-lg mr-2"></i> Tutup
+                    </button>
+                    <a href="https://wa.me/6285117631802" target="_blank" class="flex-1 bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-medium transition flex items-center justify-center">
+                        <i class="bi bi-whatsapp mr-2"></i> WhatsApp
+                    </a>
                 </div>
             </div>
-            <form id="paymentForm">
-                <div class="mb-4 sm:mb-5">
-                    <label class="block text-gray-700 mb-2 font-medium text-sm sm:text-base">Nama Lengkap</label>
-                    <input type="text" id="customerName" class="w-full px-4 sm:px-5 py-2 sm:py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base" placeholder="Nama Anda" required>
-                </div>
-                <div class="mb-4 sm:mb-5">
-                    <label class="block text-gray-700 mb-2 font-medium text-sm sm:text-base">Nomor WhatsApp</label>
-                    <input type="tel" id="whatsappNumber" class="w-full px-4 sm:px-5 py-2 sm:py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base" placeholder="Contoh: 08123456789" required>
-                    <p class="text-xs text-gray-500 mt-2">Invoice akan dikirim ke nomor ini</p>
-                </div>
-                <div class="mb-4 sm:mb-6">
-                    <label class="block text-gray-700 mb-2 font-medium text-sm sm:text-base">Metode Pembayaran</label>
-                    <select id="paymentMethod" class="w-full px-4 sm:px-5 py-2 sm:py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none text-sm sm:text-base" required>
-                        <option value="">Pilih metode</option>
-                        <option value="bri">Bank BRI</option>
-                        <option value="bca">Bank BCA</option>
-                        <option value="ovo">OVO</option>
-                        <option value="dana">DANA</option>
-                    </select>
-                </div>
-                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 sm:py-4 rounded-xl font-medium transition flex items-center justify-center text-sm sm:text-base">
-                    <i class="bi bi-whatsapp mr-2"></i> Kirim Invoice via WhatsApp 
-                </button>
-            </form>
         </div>
     </div>
 </div>

@@ -1,55 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://www.unstorepb.web.id/</loc>
+        <loc>https://unstorepb.web.id/</loc>
         <lastmod>2023-07-01</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://www.unstorepb.web.id/sitemap.html</loc>
+        <loc>https://unstorepb.web.id/sitemap.html</loc>
         <lastmod>2023-07-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.unstorepb.web.id/index.html#produk</loc>
-        <lastmod>2023-07-01</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://www.unstorepb.web.id/index.html#jasa</loc>
-        <lastmod>2023-07-01</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://www.unstorepb.web.id/gb-kill-exp-calculator.html</loc>
+        <loc>https://unstorepb.web.id/gb-exp-calculator.html</loc>
         <lastmod>2023-07-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://www.unstorepb.web.id/gb-kill-hs-calculator.html</loc>
+        <loc>https://unstorepb.web.id/gb-kill-hs-calculator.html</loc>
         <lastmod>2023-07-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://www.unstorepb.web.id/gb-kill-badan-calculator.html</loc>
+        <loc>https://unstorepb.web.id/gb-kill-badan-calculator.html</loc>
         <lastmod>2023-07-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://www.unstorepb.web.id/index.html#pembayaran</loc>
-        <lastmod>2023-07-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://www.unstorepb.web.id/index.html#cs</loc>
+        <loc>https://unstorepb.web.id/about.html</loc>
         <lastmod>2023-07-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
