@@ -13,3 +13,10 @@
 ### Update 06/07/2025 14:40
 - Update contact whatsapp
 - Remove list exp dari calculator gb
+### Update 09/07/2025 13:41
+- NEW Page about.html
+- NEW section paymentmodal
+- Update sitemap
+- Update paymentmodal
+- Update JS Paymentmodal
+- Add QRIS
