@@ -1,66 +1,21 @@
-// Fungsi untuk tab system
 function openTab(tabId) {
-    // Sembunyikan semua tab content
     const tabContents = document.querySelectorAll('.tab-content');
     tabContents.forEach(content => {
         content.classList.add('hidden');
     });
-    
-    // Tampilkan tab yang dipilih
+
     document.getElementById(tabId).classList.remove('hidden');
-    
-    // Update style tab button
+
     const tabButtons = document.querySelectorAll('.tab-button');
     tabButtons.forEach(button => {
         button.classList.remove('text-blue-600', 'border-b-2', 'border-blue-600');
         button.classList.add('text-gray-500');
     });
-    
-    // Aktifkan tab yang dipilih
+
     event.currentTarget.classList.add('text-blue-600', 'border-b-2', 'border-blue-600');
     event.currentTarget.classList.remove('text-gray-500');
 }
 
-// Update form submission untuk kirim invoice ke WhatsApp
-document.getElementById('paymentForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const productName = document.getElementById('productName').textContent;
-    const productCode = document.getElementById('productCode').textContent;
-    const totalPrice = document.getElementById('totalPrice').textContent;
-    const customerName = document.getElementById('customerName').value;
-    const whatsappNumber = document.getElementById('whatsappNumber').value;
-    const paymentMethod = document.getElementById('paymentMethod').value;
-    
-    // Format nomor WhatsApp (hapus +62 atau 0 di depan)
-    let formattedNumber = whatsappNumber.replace(/^\+62/, '').replace(/^0/, '');
-    if (!formattedNumber.startsWith('62') && !formattedNumber.startsWith('0')) {
-        formattedNumber = '62' + formattedNumber;
-    }
-    formattedNumber = formattedNumber.replace(/\D/g, '');
-    
-    // Buat pesan invoice
-    const invoiceMessage = `Halo UNSTOREPB,\n\nSaya ingin membeli produk berikut:\n\n` +
-                        `*Nama Produk:* ${productName}\n` +
-                        `*Kode Akun:* ${productCode}\n` +
-                        `*Total Pembayaran:* ${totalPrice}\n` +
-                        `*Metode Pembayaran:* ${document.getElementById('paymentMethod').options[document.getElementById('paymentMethod').selectedIndex].text}\n\n` +
-                        `*Data Pembeli:*\n` +
-                        `Nama: ${customerName}\n` +
-                        `WhatsApp: ${whatsappNumber}\n\n` +
-                        `Mohon kirimkan detail pembayaran dan nomor rekening untuk proses selanjutnya.`;
-    
-    // Encode message untuk URL
-    const encodedMessage = encodeURIComponent(invoiceMessage);
-    
-    // Redirect ke WhatsApp dengan pesan invoice
-    window.open(`https://wa.me/6285117631802?text=${encodedMessage}`, '_blank');
-    
-    // Tutup modal
-    closeModal();
-});
-
-// Update fungsi showPaymentModal untuk menerima harga
 function showPaymentModal(name, price, code) {
     const modal = document.getElementById('paymentModal');
     document.getElementById('productName').textContent = name;
@@ -70,7 +25,6 @@ function showPaymentModal(name, price, code) {
     modal.classList.remove('hidden');
 }
 
-// Update fungsi showDetailModal
 function showDetailModal(name, code, price = 0, driveLink = '') {
     const modal = document.getElementById('detailModal');
     document.getElementById('detailProductName').textContent = name;
@@ -124,9 +78,9 @@ function showDetailModal(name, code, price = 0, driveLink = '') {
 function showGBModal(service) {
     const modal = document.getElementById('gbModal');
     document.getElementById('gbServiceName').textContent = service;
-    // Set WhatsApp link with pre-filled message
+
     const whatsappLink = document.getElementById('gbWhatsAppLink');
-    const message = `Halo, saya ingin pesan jasa ${encodeURIComponent(service)}. Mohon info ketersediaan dan detailnya.`;
+    const message = `Halo, saya ingin pesan jasa ${encodeURIComponent(service)}. Mohon info list harga lengkap dan detailnya.`;
     whatsappLink.href = `https://wa.me/6285117631802?text=${message}`;
     modal.classList.remove('hidden');
 }
@@ -208,7 +162,6 @@ window.addEventListener('load', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu toggle functionality
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     
@@ -218,7 +171,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Submenu toggle functionality
     function setupSubmenuToggle(buttonId, menuId, iconId) {
         const button = document.getElementById(buttonId);
         const menu = document.getElementById(menuId);
@@ -233,10 +185,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Initialize all submenu toggles
     setupSubmenuToggle('gbSubmenuButton', 'gbSubmenu', 'gbChevron');
-    
-    // Remove all inline onclick handlers from HTML
+
     document.querySelectorAll('[onclick^="toggleSubMenu"]').forEach(element => {
         element.removeAttribute('onclick');
     });
@@ -250,3 +200,159 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// Payment Modal Functions
+let paymentTimer;
+let secondsLeft = 300; // 5 minutes in seconds
+
+function showPaymentModal(productName, price, productCode) {
+    document.getElementById('productName').textContent = productName;
+    document.getElementById('productCode').textContent = productCode;
+    document.getElementById('productPrice').textContent = formatPrice(price);
+    document.getElementById('totalPrice').textContent = formatPrice(price);
+    document.getElementById('qrisTotalPrice').textContent = formatPrice(price);
+
+    document.getElementById('paymentFormStep').classList.remove('hidden');
+    document.getElementById('qrisPaymentStep').classList.add('hidden');
+    document.getElementById('paymentExpiredStep').classList.add('hidden');
+
+    document.getElementById('paymentForm').reset();
+
+    document.getElementById('paymentModal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    clearInterval(paymentTimer);
+    document.getElementById('paymentModal').classList.add('hidden');
+    document.body.style.overflow = 'auto';
+}
+
+function formatPrice(price) {
+    return 'Rp ' + price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+function startPaymentTimer() {
+    clearInterval(paymentTimer);
+    secondsLeft = 300; // Reset to 5 minutes
+    
+    paymentTimer = setInterval(function() {
+        secondsLeft--;
+        
+        const minutes = Math.floor(secondsLeft / 60);
+        const seconds = secondsLeft % 60;
+        
+        document.getElementById('paymentCountdown').textContent = 
+            (minutes < 10 ? '0' : '') + minutes + ':' + 
+            (seconds < 10 ? '0' : '') + seconds;
+            
+        if (secondsLeft <= 0) {
+            clearInterval(paymentTimer);
+            document.getElementById('qrisPaymentStep').classList.add('hidden');
+            document.getElementById('paymentExpiredStep').classList.remove('hidden');
+        }
+    }, 1000);
+}
+
+function backToPaymentForm() {
+    clearInterval(paymentTimer);
+    document.getElementById('paymentFormStep').classList.remove('hidden');
+    document.getElementById('qrisPaymentStep').classList.add('hidden');
+}
+
+function restartPayment() {
+    document.getElementById('paymentExpiredStep').classList.add('hidden');
+    document.getElementById('paymentFormStep').classList.remove('hidden');
+}
+
+function checkPaymentStatus() {
+    alert('Pembayaran berhasil! Kami akan segera memproses pesanan Anda.');
+    closeModal();
+}
+
+// Handle form submission
+document.getElementById('paymentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const paymentMethod = document.getElementById('paymentMethod').value;
+    
+    if (paymentMethod === 'qris') {
+        document.getElementById('paymentFormStep').classList.add('hidden');
+        document.getElementById('qrisPaymentStep').classList.remove('hidden');
+
+        startPaymentTimer();
+    } else {
+        // Semua pembayaran sementara dialihkan ke QRIS karna lebih mudah
+        document.getElementById('paymentFormStep').classList.add('hidden');
+        document.getElementById('qrisPaymentStep').classList.remove('hidden');
+
+        startPaymentTimer();
+
+        // For other payment methods, proceed as before
+        // const productName = document.getElementById('productName').textContent;
+        // const productCode = document.getElementById('productCode').textContent;
+        // const totalPrice = document.getElementById('totalPrice').textContent;
+        // const customerName = document.getElementById('customerName').value;
+        // const whatsappNumber = document.getElementById('whatsappNumber').value;
+        
+        // Construct WhatsApp message
+        // let message = `Halo UNSTOREPB, saya ingin membeli:\n\n`;
+        // message += `Produk: ${productName}\n`;
+        // message += `Kode: ${productCode}\n`;
+        // message += `Total: ${totalPrice}\n`;
+        // message += `Metode Pembayaran: ${document.getElementById('paymentMethod').options[document.getElementById('paymentMethod').selectedIndex].text}\n\n`;
+        // message += `Nama: ${customerName}\n`;
+        // message += `WhatsApp: ${whatsappNumber}\n\n`;
+        // message += `Saya sudah melakukan pembayaran.`;
+        
+        // Encode message for URL
+        // const encodedMessage = encodeURIComponent(message);
+        
+        // Open WhatsApp
+        // window.open(`https://wa.me/6281318260993?text=${encodedMessage}`, '_blank');
+        
+        // closeModal();
+    }
+});
+
+function checkPaymentStatus() {
+
+    document.getElementById('qrisPaymentStep').classList.add('hidden');
+    document.getElementById('paymentSuccessStep').classList.remove('hidden');
+
+    clearInterval(paymentTimer);
+
+    const whatsappNumber = document.getElementById('whatsappNumber').value;
+    const productName = document.getElementById('productName').textContent;
+    const productCode = document.getElementById('productCode').textContent;
+    
+    console.log('Payment successful for:', {
+        whatsappNumber,
+        productName,
+        productCode
+    });
+}
+
+function restartPayment() {
+    document.getElementById('paymentExpiredStep').classList.add('hidden');
+    document.getElementById('paymentSuccessStep').classList.add('hidden');
+    document.getElementById('paymentFormStep').classList.remove('hidden');
+}
+
+function showPaymentModal(productName, price, productCode) {
+    document.getElementById('productName').textContent = productName;
+    document.getElementById('productCode').textContent = productCode;
+    document.getElementById('productPrice').textContent = formatPrice(price);
+    document.getElementById('totalPrice').textContent = formatPrice(price);
+    document.getElementById('qrisTotalPrice').textContent = formatPrice(price);
+    
+    document.getElementById('paymentFormStep').classList.remove('hidden');
+    document.getElementById('qrisPaymentStep').classList.add('hidden');
+    document.getElementById('paymentExpiredStep').classList.add('hidden');
+    document.getElementById('paymentSuccessStep').classList.add('hidden');
+    
+    document.getElementById('paymentForm').reset();
+
+    document.getElementById('paymentModal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
