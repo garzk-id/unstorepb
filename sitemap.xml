@@ -10,13 +10,13 @@
         <loc>https://unstorepb.web.id/sitemap.html</loc>
         <lastmod>2023-07-01</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.8</priority>
     </url>
     <url>
         <loc>https://unstorepb.web.id/about.html</loc>
         <lastmod>2023-07-01</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.8</priority>
     </url>
     <url>
         <loc>https://unstorepb.web.id/gb-exp-calculator.html</loc>
@@ -40,6 +40,6 @@
         <loc>https://unstorepb.web.id/404.html</loc>
         <lastmod>2023-07-01</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.5</priority>
     </url>
 </urlset>
